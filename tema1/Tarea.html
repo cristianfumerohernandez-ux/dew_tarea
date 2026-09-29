@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea</title>
+</head>
+
+<body>
+    <h1>Ejercicios progresivos</h1>
+
+    <script>
+        function funcionSaludar(nombre) {
+            console.log("Saludos", nombre)
+        }
+        console.log("== Primer Ejercicio ==");
+        funcionSaludar("Juan");
+
+
+
+        function funcionSumar(numero1, numero2) {
+            return (numero1 + numero2)
+        }
+        console.log("== Segundo Ejercicio ==");
+        console.log("El resultado es:", funcionSumar(5, 3));
+
+
+
+        function funcionMayor(numero1, numero2) {
+            if (numero1 > numero2) {
+                return numero1
+            } else {
+                return numero2
+            }
+        }
+        console.log("== Tercer Ejercicio ==");
+        console.log("Número mayor:", funcionMayor(10, 7));
+
+        function funcionParImpar(num) {
+            if (num % 2 == 0) {
+                console.log(num, "Es par")
+            } else {
+                console.log(num, "Es impar")
+            }
+        }
+        console.log("== Cuarto Ejercicio ==");
+        funcionParImpar(6);
+
+        function sumaArray(array) {
+            return array.reduce((acumulador, num) => acumulador + num, 0);
+        }
+        console.log("== Quinto Ejercicio ==");
+        console.log(sumaArray([1, 2, 3, 4, 5]));
+
+        function encontrarArray(array) {
+            let nMax = array[0] ;
+            for (let i = 0; i < array.length; i++) {
+                if (array[i]> nMax) {
+                    nMax = array[i];
+                }
+            }
+            return nMax;
+        }
+        console.log("== Sexto Ejercicio ==");
+        console.log(encontrarArray([3, 7, 9, 2]));
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
