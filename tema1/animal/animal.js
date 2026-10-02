@@ -80,35 +80,57 @@ function toggleHighlight(card) {
 // En este nivel se añaden y se quitan elementos del DOM.
 
 // Crear y Añadir Elementos:
-
 // Crea un nuevo <h2> con el texto "Reptiles".
-
+const newH2 = document.createElement('h2');
+newH2.textContent = "Reptiles";
 // Crea una nueva sección con id="reptiles" y la clase category.
-
+const newSection = document.createElement('section');
+newSection.id = "reptiles";
+newSection.classList.add('category');
 // Añade el <h2> que has creado dentro de la nueva sección.
-
+// newSection.innerHTML = "<h2>Reptiles</h2>"
+   newSection.appendChild(newH2);
 // Finalmente, añade esta nueva sección de reptiles al main de la página, justo después de la sección de aves.
-
+const aside = document.getElementById('sidebar');
+const main = document.querySelector('main');
+main.insertBefore(newSection,aside);
 // Crear y Añadir una Nueva Tarjeta:
 // Dentro de la nueva sección de reptiles, crea un article con la clase card.
+const newCard = document.createElement('div')
+newCard.classList.add('card-container');
+newCard.innerHTML= `
+            <article class="card" data-animal-type="tierra">
+                    <h3>Serpiente</h3>
+                    <p>Reptil sin patas conocido por su sigilo.</p>
+                    <ul class="features">
+                        <li class="feature-item important">Puede ser venenoso</li>
+                        <li class="feature-item">No tiene patas</li>
+                    </ul>
+             </article>
+             `;
 
-// Dentro de la tarjeta, añade un <h3> con el texto "Serpiente".
-
-// Añade también un párrafo <p> que diga "Reptil sin patas conocido por su sigilo.".
-
-// Inserta esta nueva tarjeta dentro de la sección de reptiles.
+newSection.appendChild(newCard);
 
 // Eliminar Elementos:
 // Selecciona y elimina el aside (#sidebar).
-
+aside.remove();
 // Elimina la característica "Gran melena" de la lista de características del león.
 
+//Eliminando la primera caracteristica de leon
+const encabezados3 = document.querySelectorAll('article h3');
+const leonH3 = [...encabezados3].find(h3 => h3.textContent === "León")
+const leonArticle = leonH3.parentElement;
+const leonFeatures = leonArticle.querySelectorAll('ul.features li')
+leonFeatures[0].remove();
 // Nivel 4: Mover Elementos y Eventos
 // Se combinan conceptos para reorganizar la página dinámicamente.
 
 // Mover Elementos:
 // Mueve la tarjeta del delfín para que aparezca antes que la del león dentro de la sección de mamíferos.
 // (Pista: usa insertBefore).
+const delfinArticle = leonArticle.nextElementSibling;
+const cardContainer = delfinArticle.parentElement;
+cardContainer.insertBefore(delfinArticle,leonArticle);
 
 // Ejercicio Combinado (Bonus):
 // Crea un botón button con el texto "Invertir Orden".
@@ -118,3 +140,12 @@ function toggleHighlight(card) {
 // Haz que, al hacer clic en el botón, el orden de las secciones (#mammals y #birds) se invierta.
 // Es decir, si Aves está después de Mamíferos, al hacer clic, Aves debería aparecer primero.
 // Si se vuelve a hacer clic, deberían volver a su orden original.
+
+function reverse(){
+    const sections = [...document.querySelectorAll('section')];
+    console.log(sections);
+    sections.reverse();
+    sections.forEach(section =>{
+    main.appendChild(section)
+    });
+};
