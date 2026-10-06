@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .selected{
+            background-color: rgb(230, 102, 85);
+        }
+    </style>
+    <script src="dos_listados.js" defer></script>
+</head>
+
+<body>
+    <h1>Crea dos listados</h1>
+    <p>Crea dos listados. El primero tiene una lista de elementos. Se pueden seleccionar al hacer click. Pulsando un
+        botón pasan los seleccionaos al otro listados
+    </p>
+    <div>
+        <button onclick="moveSelected()">Mueve los seleccionados</button>
+        <ul id="" >
+            <li onclick="setSelected(this)">Elemento 1</li>
+            <li onclick="setSelected(this)">Elemento 2</li>
+       
+        </ul>
+        <ul>
+            <li onclick="setSelected(this)">Elemento número 1</li>
+            <li onclick="setSelected(this)">Elemento número 2</li>
+           
+        </ul>
+    </div>
+
+</body>
+
+</html>
