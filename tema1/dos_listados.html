@@ -6,8 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        #container{
+            display: flex;
+            gap: 10px;
+        }
+        #listOrigin{
+            background-color: rgb(102, 230, 85);
+            padding: 20px;
+          
+        }
         .selected{
             background-color: rgb(230, 102, 85);
+        }
+        #listDestination{
+            background-color: rgb(85, 100, 230);
+            padding: 20px;
         }
     </style>
     <script src="dos_listados.js" defer></script>
@@ -18,16 +31,23 @@
     <p>Crea dos listados. El primero tiene una lista de elementos. Se pueden seleccionar al hacer click. Pulsando un
         botón pasan los seleccionaos al otro listados
     </p>
-    <div>
-        <button onclick="moveSelected()">Mueve los seleccionados</button>
-        <ul id="" >
+    <p>
+    <button onclick="changeElementLeft()">&lt; </button>
+    Mueve los seleccionados
+    <button onclick="changeElementRight()">&gt; </button>
+    </p>
+    <div id="container">
+        
+        <ul id="listOrigin">
             <li onclick="setSelected(this)">Elemento 1</li>
-            <li onclick="setSelected(this)">Elemento 2</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+            <li>Elemento 4</li>
+            <li>Elemento 5</li>
+            
        
         </ul>
-        <ul>
-            <li onclick="setSelected(this)">Elemento número 1</li>
-            <li onclick="setSelected(this)">Elemento número 2</li>
+        <ul id="listDestination">
            
         </ul>
     </div>
