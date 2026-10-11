@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego Dado</title>
+    <style>
+        input{
+            width: 50px;
+        }
+    </style>
     <script src="dado.js" defer></script>
 </head>
 <body>
     <h1>Juego del dado</h1>
     <img src="images/dice1.gif" alt="1">
-    <button onclick="play()">Lanzar</button>
+    <span>
+        <p>Dinero Acumulado: <span id="infoMoney"></span> </p>
+        <p>Apostar <input type="number"id="inputMoney"> </p>
+    </span>
+    <button onclick="play()">Sacaré un número mayor</button>
     
 </body>
 </html>
