@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Añadir EventListener</h1>
+    <p>Crea una funcion que devuelva por consola un saludo y añade dicha función addEventListener al pulsar un botón, una imagen y un texto dentro de un parrafo</p>
+    <button id="boton">Botón Mágico</button>
+    <img  src="Flag_of_the_United_Nations.svg.webp" alt="foto">
+    <p id="parrafo">Buenas clicka aquí</p>
+    <a href="eventos.html" target="_blank">Enlace a otra página</a>
+
+
+
+
+</body>
+<script>
+    const boton = document.getElementById('boton');
+    boton.addEventListener('click',pulsarBoton);
+
+    const imagen = document.querySelector('img');
+    imagen.addEventListener('mouseover',pulsarBoton);
+
+    const parrafo = document.getElementById('parrafo');
+    parrafo.addEventListener('click',pulsarBoton);
+
+    const enlace = document.querySelector('a');
+    enlace.addEventListener('click',pulsarBoton);
+
+    function pulsarBoton(event){
+        event.preventDefault();
+        console.log("Buenas")
+    }
+</script>
+</html>
