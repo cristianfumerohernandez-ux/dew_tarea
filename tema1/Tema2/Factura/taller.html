@@ -19,6 +19,7 @@
 
         }
     </style>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -27,16 +28,16 @@
     <section>
         <form>
             <div id="addItem">
-                <span>Concepto: <input type="text"></span>
-                <span> Cantidad: <input type="number" value="1"></span>
-                <span>Precio: <input type="number"></span>
-                <button>Insertar</button> </span>
+                <span >Concepto: <input type="text" name="concept"></span>
+                <span >Cantidad: <input type="number" value="1" name="quantity"></span>
+                <span >Precio: <input type="number" name="price"></span>
+                <button id="insert" type="button">Insertar</button> </span>
             </div>
             <h2>Seleccionar Impuestos</h2>
             <span><input type="radio" name="tax" id="taxes1"> 5%</span>
             <span><input type="radio" name="tax" id="taxes2"> 10%</span>
             <span><input type="radio" name="tax" id="taxes3"> 15%</span>
-            <span><input type="radio" name="tax" id="taxes4"> 20%</span>
+            <span><input type="radio" name="tax" id="taxes4" checked> 20%</span>
 
         </form>
     </section>
