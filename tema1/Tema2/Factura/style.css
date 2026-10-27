@@ -48,6 +48,6 @@ th, td { padding: 10px; border-bottom: 1px solid #e3e9ee; }
  
 th { background: #6bb98e; color: #fff; }
  
-tfoot td { text-align: right; border: 0; }
+tfoot td { text-align: left; border: 0; }
  
 tfoot tr:last-child { font-weight: bold; font-size: 1.2rem; color: #087c17; }
