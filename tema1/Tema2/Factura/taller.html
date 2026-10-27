@@ -5,20 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Factura</title>
-    <style>
-        body {
-            text-align: center;
-            max-width: 650px;
-            margin: 25px auto;
-        }
-
-        #addItem {
-            display: flex;
-            justify-content: space-around;
-            gap: 10px;
-
-        }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
@@ -34,10 +22,10 @@
                 <button id="insert" type="button">Insertar</button> </span>
             </div>
             <h2>Seleccionar Impuestos</h2>
-            <span><input type="radio" name="tax" id="taxes1"> 5%</span>
-            <span><input type="radio" name="tax" id="taxes2"> 10%</span>
-            <span><input type="radio" name="tax" id="taxes3"> 15%</span>
-            <span><input type="radio" name="tax" id="taxes4" checked> 20%</span>
+            <span><input type="radio" name="tax" id="taxes1" value="5"> 5%</span>
+            <span><input type="radio" name="tax" id="taxes2" value="10"> 10%</span>
+            <span><input type="radio" name="tax" id="taxes3" value="15"> 15%</span>
+            <span><input type="radio" name="tax" id="taxes4" value="20" checked> 20%</span>
 
         </form>
     </section>
@@ -57,18 +45,22 @@
             <tfoot>
                 <tr>
                     <td colspan="3">Subtotal:</td>
+                    <td></td>
 
                 </tr>
                 <tr>
                     <td colspan="3">Tasa:</td>
+                    <td></td>
 
                 </tr>
                 <tr>
                     <td colspan="3">Impuestos:</td>
+                    <td></td>
 
                 </tr>
                 <tr>
                     <td colspan="3">TOTAL:</td>
+                    <td></td>
 
                 </tr>
             </tfoot>
