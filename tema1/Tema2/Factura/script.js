@@ -35,6 +35,8 @@ function insertProduct() {
         <td><button class="delete" onclick= "deleteRow(this)">X</button></td>
     `;
     table.appendChild(newTr);
+    }else{
+        alert("Introduce un nº válido")
     }
 
     document.querySelector('form').reset()
