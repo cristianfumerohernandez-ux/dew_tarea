@@ -25,6 +25,8 @@ function readProductData() {
 function insertProduct() {
     const product = readProductData();
     newTr = document.createElement('tr')
+    if(typeof product.price === 'number' ){
+
     newTr.innerHTML = `
         <td>${product.concept}</td>
         <td>${product.quantity}</td>
@@ -33,6 +35,7 @@ function insertProduct() {
         <td><button class="delete" onclick= "deleteRow(this)">X</button></td>
     `;
     table.appendChild(newTr);
+    }
 
     document.querySelector('form').reset()
     recalculateTotal();
