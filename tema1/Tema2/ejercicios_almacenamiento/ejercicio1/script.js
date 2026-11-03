@@ -1,9 +1,14 @@
 
 function saveSession(){
 const arrayInputs = [document.getElementsByName('nombre')[0].value, document.getElementsByName('edad')[0].value ]
-if(arrayInputs[1] !== 'number' ){
+let edad = parseInt(arrayInputs[1],10)
+if(isNaN(edad) ){
   arrayInputs[1] = "Sin edad"
 }
+if(arrayInputs[0] == ""){
+  arrayInputs[0] = "Anónimo"
+}
+
 try {
   localStorage.setItem('valores', JSON.stringify(arrayInputs))
 } catch (error) {
