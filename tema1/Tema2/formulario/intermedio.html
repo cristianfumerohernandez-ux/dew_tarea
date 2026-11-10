@@ -1,26 +1,105 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        input {
+            accent-color: rgb(235, 2, 2);
+        }
+
+      
+    </style>
 </head>
+
 <body>
     <h1>Formulario con checkbox, radio y select</h1>
-     <form action="" id="form-intermedio">
+    <form action="" id="form-intermedio">
         <p>
-            <h2>Indica si eres socio</h2>
-            <p>
-                <input type="checkbox" name="member" id="member">
-                <label for="member">socio</label>
-            </p>
-            
+        <h2>Indica si eres socio</h2>
+        <p>
+            <input type="checkbox" name="member" id="member" value="si">
+            <label for="member">socio</label>
         </p>
+        <p>
+            Elige tu módulo preferido:
+            <input type="radio" name="modulo" id="module-dew" value="DEW" required>
+            <label for="module-dew">DEW</label>
+            |
+            <input type="radio" name="modulo" id="module-dsw" value="DSW" checked>
+            <label for="module-dsw">DSW</label>
+            |
+            <input type="radio" name="modulo" id="module-dpl" value="DPL">
+            <label for="module-dpl">DPL</label>
+            |
+            <input type="radio" name="modulo" id="module-dor" value="DOR">
+            <label for="module-dor">DOR</label>
+            |
+            <input type="radio" name="modulo" id="module-python" value="Python">
+            <label for="module-python">Python</label>
+        </p>
+        <p>
+            que es lo que más te gusta del módulo
+        <ul>
+            <li>
+                <input type="checkbox" name="like[]" id="like-teacher" value="teacher">
+                <label for="like-teacher">Profesor</label>
+            </li>
+            <li>
+                <input type="checkbox" name="like[]" id="like-content" value="content">
+                <label for="like-content">Contenido</label>
+            </li>
+            <li>
+                <input type="checkbox" name="like[]" id="like-copy" value="copy">
+                <label for="like-copy">Que me deja copiarme</label>
+            </li>
+        </ul>
+        </p>
+        <p>
+            <label for="curso">En que curso estás</label>
+            <select name="curso" id="curso" multiple>
+                <option value="DEW">Desarrollo en entorno de cliente</option>
+                <option value="DSW" selected>Desarrollo en entorno de servidor</option>
+                <option value="DOR">Diseño web</option>
+            </select>
+        </p>
+        <p>
+            Documento
+            <input type="file" name="document" id="document" multiple >
+        </p>
+        <p>
+            <button type="submit">Enviar</button>
+        </p>
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem esse itaque, accusantium veritatis corrupti et, expedita explicabo eum molestias magni earum? Corrupti quae debitis quis consequatur dolor? Esse, beatae dolore!
+    </p>
     </form>
-<script>
-    const form = document.getElementById('form-intermedio');
+    <script>
+        const form = document.getElementById('form-intermedio');
 
-    const formData = FormData(form);
-</script>
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const likes = formData.getAll('like[]');
+            const documents = formData.get('document')
+            if (!formData.get('member')) {
+                alert('tienes que ser socio para continuar')
+                return;
+            }
+            if (likes.length == 0) {
+                alert('debes elegir algún like')
+                return;
+            }
+
+            form.submit();
+            console.log(formData.get('module'))
+
+        })
+
+    </script>
 </body>
+
 </html>
