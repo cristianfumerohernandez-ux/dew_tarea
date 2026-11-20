@@ -9,6 +9,12 @@
         .error {
             color: red;
         }
+        input:valid{
+            border: 2px solid green;
+        }
+        input:invalid{
+            border: 2px solid red;
+        }
     </style>
     <script src="temas.js" defer></script>
 </head>
@@ -24,7 +30,8 @@
             </p>
             <p>
                 <label for="dni">DNI: </label>
-                <input type="text" name="dni" id="dni"  minlength="10" maxlength="10" required pattern="^\d{8}-[A-Z]$">
+                <input type="text" name="dni" id="dni"  minlength="10" maxlength="10"
+                 required pattern="^\d{8}-[A-Z]$" placeholder="12345678-Y">
                 <span class="error" id="errorDni"></span>
             </p>
         </fieldset>
@@ -38,12 +45,13 @@
             <input type="radio" name="tipo" id="premium" value="premium" >
             <label for="premium">Premium</label>
             <input type="radio" name="tipo" id="elite" value="elite" >
-            <label for="elite">Élite</label>      
+            <label for="elite">Élite</label>   
+            <hr>   
             <span id="precio">1</span>      
         </fieldset>
         <fieldset>
             <legend>Temas</legend>
-            <span class="error"></span>
+            <span class="error" id="errorTemas"></span>
             <div id="temasContainer">
 
             </div>        
