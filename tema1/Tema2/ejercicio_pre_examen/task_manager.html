@@ -55,23 +55,27 @@
 
     <script src="clases.js"></script>
     <script>
+        // Crea el gestor y conserva las referencias a los campos del formulario.
         const gestor = new GestorTareas("tasks");
 
         const tipo = document.getElementById("tipo");
         const campoPrioridad = document.getElementById("campoPrioridad");
         const campoDescripcion = document.getElementById("campoDescripcion");
 
+        // Muestra la prioridad solo para tareas urgentes y la descripcion solo para recordatorios.
         tipo.addEventListener("change", () => {
             campoPrioridad.hidden = tipo.value !== "TareaUrgente";
             campoDescripcion.hidden = tipo.value !== "Recordatorio";
         });
 
+        // Evita recargar la pagina y crea la tarea segun el tipo seleccionado.
         document.getElementById("formulario").addEventListener("submit", (e) => {
             e.preventDefault();
             const id = document.getElementById("id").value.trim();
             const titulo = document.getElementById("titulo").value.trim();
 
             let tarea;
+            // Construye una tarea urgente con prioridad, un recordatorio con descripcion o una tarea normal.
             if (tipo.value === "TareaUrgente") {
                 tarea = new TareaUrgente(id, titulo, document.getElementById("prioridad").value);
             } else if (tipo.value === "Recordatorio") {
@@ -80,6 +84,7 @@
                 tarea = new Tarea(id, titulo);
             }
 
+            // Agrega la tarea, limpia el formulario y actualiza la lista; muestra errores si falla.
             try {
                 gestor.add(tarea);
                 e.target.reset();
@@ -91,8 +96,10 @@
             }
         });
 
+        // Vuelve a pintar la lista al pulsar el boton de refrescar.
         document.getElementById("refrescar").addEventListener("click", () => gestor.render());
 
+        // Muestra inicialmente las tareas disponibles.
         gestor.render();
     </script>
 </body>
