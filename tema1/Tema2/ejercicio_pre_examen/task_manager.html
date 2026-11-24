@@ -1,33 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestor de Tareas</title>
 
     <style>
-        .ALTA {
-            color: darkred;
-        }
-        .MEDIA {
-            color: darkorange;
-        }
-        .BAJA {
-            color: darkred;
-        }
-        .completada {
-            text-decoration: line-through;
-        }
+        .ALTA { color: darkred; }
+        .MEDIA { color: darkorange; }
+        .BAJA { color: darkgreen; }
+        .completada { text-decoration: line-through; }
+        li { cursor: pointer; margin-bottom: 6px; }
+        form p { margin: 6px 0; }
     </style>
 </head>
 
 <body>
     <h1>Gestor de Tareas</h1>
 
-    <form>
-        <p>ID: <input type="text"></p>
+    <form id="formulario">
+        <p>
+            <label for="id">ID:</label>
+            <input type="text" id="id" required>
+        </p>
+        <p>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" required>
+        </p>
+        <p>
+            <label for="tipo">Tipo:</label>
+            <select id="tipo">
+                <option value="Tarea">Tarea</option>
+                <option value="TareaUrgente">Tarea urgente</option>
+                <option value="Recordatorio">Recordatorio</option>
+            </select>
+        </p>
+        <p id="campoPrioridad" hidden>
+            <label for="prioridad">Prioridad:</label>
+            <select id="prioridad">
+                <option value="ALTA">ALTA</option>
+                <option value="MEDIA">MEDIA</option>
+                <option value="BAJA">BAJA</option>
+            </select>
+        </p>
+        <p id="campoDescripcion" hidden>
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion">
+        </p>
+        <button type="submit">Añadir tarea</button>
+        <button type="button" id="refrescar">Refrescar</button>
     </form>
 
     <ul id="tasks"></ul>
+
+    <script src="clases.js"></script>
+    <script>
+        const gestor = new GestorTareas("tasks");
+
+        const tipo = document.getElementById("tipo");
+        const campoPrioridad = document.getElementById("campoPrioridad");
+        const campoDescripcion = document.getElementById("campoDescripcion");
+
+        tipo.addEventListener("change", () => {
+            campoPrioridad.hidden = tipo.value !== "TareaUrgente";
+            campoDescripcion.hidden = tipo.value !== "Recordatorio";
+        });
+
+        document.getElementById("formulario").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const id = document.getElementById("id").value.trim();
+            const titulo = document.getElementById("titulo").value.trim();
+
+            let tarea;
+            if (tipo.value === "TareaUrgente") {
+                tarea = new TareaUrgente(id, titulo, document.getElementById("prioridad").value);
+            } else if (tipo.value === "Recordatorio") {
+                tarea = new Recordatorio(id, titulo, document.getElementById("descripcion").value);
+            } else {
+                tarea = new Tarea(id, titulo);
+            }
+
+            try {
+                gestor.add(tarea);
+                e.target.reset();
+                campoPrioridad.hidden = true;
+                campoDescripcion.hidden = true;
+                gestor.render();
+            } catch (err) {
+                alert(err.message);
+            }
+        });
+
+        document.getElementById("refrescar").addEventListener("click", () => gestor.render());
+
+        gestor.render();
+    </script>
 </body>
 </html>
